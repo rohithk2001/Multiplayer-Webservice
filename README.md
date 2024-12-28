@@ -67,4 +67,4 @@ docker-compose up --build
 Contributions are welcome! Please fork the repository and submit a pull request for any improvements or features you'd like to add.
 
 
-## i will upload a detailed Readmefile very soon sorry for inconvineince
+## i will upload a detailed Readmefile very soon sorry for inconvenience
