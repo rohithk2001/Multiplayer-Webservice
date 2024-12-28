@@ -1,0 +1,13 @@
+db.modes.find();
+show collections;
+use multiplayer;
+]);
+    { mode_name: "Mode2", active_users: 15, area_code: "102" }
+    { mode_name: "Mode1", active_users: 10, area_code: "101" },
+db.modes.insertMany([
+db.modes.find(); 
+show collections; 
+use multiplayer; 
+db.modes.find();
+show collections;
+use multiplayer; 

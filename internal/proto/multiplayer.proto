@@ -1,0 +1,116 @@
+syntax = "proto3";
+
+package multiplayer;
+
+// Request to query multiplayer mode usage
+message ModeUsageRequest {
+  string area_code = 1;   // The 3-digit area code
+}
+
+// Response containing mode usage information
+message ModeUsageResponse {
+  repeated ModeUsage modes = 1; // List of mode usages
+}
+
+// A single mode usage record
+message ModeUsage {
+  string mode_name = 1;   // Name of the multiplayer mode
+  int32 active_users = 2; // Number of active users in this mode
+  string area_code = 3;   // The area code for the game mode
+}
+
+// New request to get detailed mode information
+message ModeDetailsRequest {
+  string mode_name = 1; // The mode name
+}
+
+// Response for mode details
+message ModeDetailsResponse {
+  string mode_name = 1;
+  string description = 2; // Description of the game mode
+  int32 active_users = 3; // Number of active users in this mode
+  string area_code = 4;   // Area code for the mode
+}
+
+// Request to get active users by area code
+message ActiveUsersByAreaCodeRequest {
+  string area_code = 1; // The area code
+}
+
+// Response for active users by area code
+message ActiveUsersByAreaCodeResponse {
+  int32 total_active_users = 1; // Total active users for the given area code
+}
+
+// Request to get game mode statistics
+message GameModeStatsRequest {}
+
+message GameModeStatsResponse {
+  int32 total_modes = 1; // Total number of modes
+  int32 total_active_users = 2; // Total active users across all modes
+}
+
+// Service definition for Multiplayer API
+service MultiplayerService {
+  rpc GetModeUsage (ModeUsageRequest) returns (ModeUsageResponse);
+  rpc GetTotalActiveUsers (TotalActiveUsersRequest) returns (TotalActiveUsersResponse);
+  
+  // New methods
+  rpc GetModeDetails (ModeDetailsRequest) returns (ModeDetailsResponse);
+  rpc GetActiveUsersByAreaCode (ActiveUsersByAreaCodeRequest) returns (ActiveUsersByAreaCodeResponse);
+  rpc GetGameModeStats (GameModeStatsRequest) returns (GameModeStatsResponse);
+   rpc JoinMode (JoinModeRequest) returns (JoinModeResponse);
+  rpc LeaveMode (LeaveModeRequest) returns (LeaveModeResponse);
+  rpc GetPlayers (GetPlayersRequest) returns (GetPlayersResponse);
+  rpc UpdateGameState (UpdateGameStateRequest) returns (UpdateGameStateResponse);
+}
+
+message TotalActiveUsersRequest {}
+
+message TotalActiveUsersResponse {
+    int32 totalActiveUsers = 1;
+}
+
+// Define the request and response for joining a mode
+message JoinModeRequest {
+    string mode_name = 1;
+    string player_id = 2; // Player ID or Name
+}
+
+message JoinModeResponse {
+    string message = 1;
+}
+
+// Define the request and response for leaving a mode
+message LeaveModeRequest {
+    string mode_name = 1;
+    string player_id = 2;
+}
+
+message LeaveModeResponse {
+    string message = 1;
+}
+
+// Request to fetch players in a mode
+message GetPlayersRequest {
+    string mode_name = 1;
+}
+
+message GetPlayersResponse {
+    repeated string players = 1; // List of player IDs or names
+}
+
+// Request to update the game state of a mode
+message UpdateGameStateRequest {
+    string mode_name = 1;
+    string game_state = 2; // New game state (e.g., active, paused, ended)
+}
+
+message UpdateGameStateResponse {
+    string message = 1;
+}
+
+
+
+option go_package = "multiplayer-webservice/internal/proto";
+

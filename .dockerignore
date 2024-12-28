@@ -1,0 +1,18 @@
+# Ignore the vendor directory
+vendor/
+
+# Ignore local environment files
+.env.local
+
+# Ignore git files
+.git
+.gitignore
+
+# Ignore IDE files
+.vscode/
+.idea/
+
+# Ignore binary outputs
+*.exe
+*.out
+*.log
