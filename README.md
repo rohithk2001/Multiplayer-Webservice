@@ -58,10 +58,13 @@ Build and start the services:
 
 ```bash
 
-## i will upload a detailed Readmefile very soon sorry for inconvineince
 
 
 docker-compose up --build
 ```
+## Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request for any improvements or features you'd like to add.
 
 
+## i will upload a detailed Readmefile very soon sorry for inconvineince
