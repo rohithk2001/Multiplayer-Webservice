@@ -58,6 +58,9 @@ Build and start the services:
 
 ```bash
 
+## i will upload a detailed Readmefile very soon sorry for inconvineince
+
+
 docker-compose up --build
 ```
 
